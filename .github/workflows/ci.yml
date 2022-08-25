@@ -2,7 +2,7 @@ name: test Cron CI
 
 on:
   schedule:
-    - cron: '54 2 * * *'
+    - cron: '55 2 * * *'
 
 jobs:
   build:
