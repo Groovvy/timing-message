@@ -1,8 +1,11 @@
 name: test Cron CI
 
 on:
+  push:
+    branches:
+      - master
   schedule:
-    - cron: '55 2 * * *'
+    - cron:  '5 3 * * *'
 
 jobs:
   build:
