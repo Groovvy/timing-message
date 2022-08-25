@@ -20,10 +20,10 @@ public class App {
         WxMpServiceImpl mpService = new WxMpServiceImpl();
         mpService.setWxMpConfigStorage(storage);
         Lover lover = new Lover("o-O-Z6Pz1P9033TloUTSZzLqGy1U", "江苏省", "南京市", "1996-12-05", "2015-10-19");
-        Lover lover2 = new Lover("o-O-Z6ChkLvecqydcb2UIFR-twnU", "江苏省", "南京市", "1996-12-05", "2015-10-19");
         WxMpTemplateMessage message = MessageFactory.resolveMessage(lover, "-khCNXbPS6Mf4dTLtESaVP-Dp6217bcdTLt22azh6R0");
-        WxMpTemplateMessage message2 = MessageFactory.resolveMessage(lover2, "-khCNXbPS6Mf4dTLtESaVP-Dp6217bcdTLt22azh6R0");
         mpService.getTemplateMsgService().sendTemplateMsg(message);
+        Lover lover2 = new Lover("o-O-Z6ChkLvecqydcb2UIFR-twnU", "江苏省", "南京市", "1996-12-05", "2015-10-19");
+        WxMpTemplateMessage message2 = MessageFactory.resolveMessage(lover2, "-khCNXbPS6Mf4dTLtESaVP-Dp6217bcdTLt22azh6R0");
         mpService.getTemplateMsgService().sendTemplateMsg(message2);
 
     }

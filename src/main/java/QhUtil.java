@@ -16,6 +16,6 @@ public class QhUtil {
                 .setConnectionTimeout(3000)
                 .setReadTimeout(4000)
                 .execute();
-        return parseObj(response.body()).get("word").toString();
+        return parseObj(response.body()).get("word").toString().replaceAll("<br>","\n");
     }
 }
