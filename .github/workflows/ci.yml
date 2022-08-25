@@ -1,0 +1,21 @@
+name: test Cron CI
+
+on:
+  schedule:
+    - cron: '* 0 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 9
+        uses: actions/setup-java@v3
+        with:
+          java-version: '9'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
+      - name: SendWxTemplateMsg
+        run: sudo java -jar ./target/timing-message-1.0-SNAPSHOT.jar
