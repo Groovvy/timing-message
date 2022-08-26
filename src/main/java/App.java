@@ -22,9 +22,9 @@ public class App {
         Lover lover = new Lover("o-O-Z6Pz1P9033TloUTSZzLqGy1U", "江苏省南京市江宁区", null, "1996-12-05", "2015-10-19");
         WxMpTemplateMessage message = MessageFactory.resolveMessage(lover, "-khCNXbPS6Mf4dTLtESaVP-Dp6217bcdTLt22azh6R0");
         mpService.getTemplateMsgService().sendTemplateMsg(message);
-//        Lover lover2 = new Lover("o-O-Z6ChkLvecqydcb2UIFR-twnU", "江苏省南京市江宁区", null, "1996-12-05", "2015-10-19");
-//        WxMpTemplateMessage message2 = MessageFactory.resolveMessage(lover2, "-khCNXbPS6Mf4dTLtESaVP-Dp6217bcdTLt22azh6R0");
-//        mpService.getTemplateMsgService().sendTemplateMsg(message2);
+        Lover lover2 = new Lover("o-O-Z6ChkLvecqydcb2UIFR-twnU", "江苏省南京市江宁区", null, "1996-12-05", "2015-10-19");
+        WxMpTemplateMessage message2 = MessageFactory.resolveMessage(lover2, "-khCNXbPS6Mf4dTLtESaVP-Dp6217bcdTLt22azh6R0");
+        mpService.getTemplateMsgService().sendTemplateMsg(message2);
 
     }
 }
