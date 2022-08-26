@@ -48,7 +48,7 @@ public class MessageFactory {
                 TemplateDataBuilder.builder().name("nextBirthday").value(lover.getNextBirthdayDays()).color("#771F06").build(),
                 TemplateDataBuilder.builder().name("nextMemorialDay").value(lover.getNextMemorialDay()).color("#551DB0").build(),
                 TemplateDataBuilder.builder().name("province").value(lover.getProvince()).color("#F53F3F").build(),
-                TemplateDataBuilder.builder().name("city").value(lover.getCity()).color("#FADC19").build(),
+//                TemplateDataBuilder.builder().name("city").value(lover.getCity()).color("#FADC19").build(),
                 TemplateDataBuilder.builder().name("weather").value(weather.getWeather()).color("#00B42A").build(),
                 TemplateDataBuilder.builder().name("temperature").value(weather.getTemperature()).color("#722ED1").build(),
                 TemplateDataBuilder.builder().name("winddirection").value(weather.getWinddirection()).color("#F5319D").build(),
