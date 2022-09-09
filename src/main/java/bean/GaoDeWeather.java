@@ -1,8 +1,10 @@
+package bean;
+
 /**
  * @author wanghuaan
  * @date 2022/8/25
  */
-public class WeatherInfo {
+public class GaoDeWeather {
     private String province;
     private String city;
     private String weather;
@@ -44,7 +46,7 @@ public class WeatherInfo {
     }
 
     public String getWinddirection() {
-        return winddirection;
+        return winddirection + "风";
     }
 
     public void setWinddirection(String winddirection) {
@@ -52,7 +54,7 @@ public class WeatherInfo {
     }
 
     public String getWindpower() {
-        return windpower;
+        return windpower + "级";
     }
 
     public void setWindpower(String windpower) {

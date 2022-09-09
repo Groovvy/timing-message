@@ -1,3 +1,6 @@
+package util;
+
+import bean.GaoDeWeather;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
 
@@ -9,7 +12,7 @@ import static cn.hutool.json.JSONUtil.parseObj;
  * @author wanghuaan
  * @date 2022/8/25
  */
-public class GaodeUtil {
+public class GaodeWeatherUtil {
 
     private static final String key = "5f69460257bc787951c5da939769fb21";
 
@@ -24,13 +27,13 @@ public class GaodeUtil {
         return parseObj(parseObj(response.body()).getJSONArray("geocodes").get(0)).getInt("adcode");
     }
 
-    public static WeatherInfo getNowWeatherInfo(Integer adcCode) {
+    public static GaoDeWeather getNowWeatherInfo(Integer adcCode) {
         HttpResponse response = HttpUtil.createGet(String.format(WEATHER_API, key, adcCode, "base"))
                 .setConnectionTimeout(3000)
                 .setReadTimeout(4000)
                 .execute();
-        List<WeatherInfo> lives =
-                parseObj(response.body()).getJSONArray("lives").toList(WeatherInfo.class);
+        List<GaoDeWeather> lives =
+                parseObj(response.body()).getJSONArray("lives").toList(GaoDeWeather.class);
         return lives.get(0);
     }
 }
