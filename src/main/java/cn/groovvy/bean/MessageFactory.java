@@ -1,5 +1,6 @@
 package cn.groovvy.bean;
 
+import cn.groovvy.enums.IndicesTypeEnum;
 import cn.hutool.core.util.StrUtil;
 import com.google.common.collect.Lists;
 import me.chanjar.weixin.mp.bean.template.WxMpTemplateData;
@@ -12,6 +13,7 @@ import cn.groovvy.util.WeatherUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author wanghuaan
@@ -41,7 +43,9 @@ public class MessageFactory {
      * ☀️最高温度{{high.DATA}}
      * 🧊最低温度{{low.DATA}}
      * 💨{{wind.DATA}}{{windLevel.DATA}}
-     * 🗒{{remark.DATA}}
+     * 👔穿衣指数{{dressing.DATA}}
+     * 🪞化妆指数{{makeup.DATA}}
+     * 🚗洗车指数{{washCar.DATA}}
      * 💞我们已经恋爱{{total.DATA}}天啦
      * 🎂距离你下一次生日还有{{nextBirthday.DATA}}天
      * 💕具体我们的下一次纪念日还有{{nextMemorialDay.DATA}}天
@@ -51,17 +55,20 @@ public class MessageFactory {
         int days = Days.daysBetween(new DateTime(lover.getMemorialDay()), DateTime.now()).getDays();
         GaoDeWeather gaodeWeather = GaodeWeatherUtil.getNowWeatherInfo(GaodeWeatherUtil.getAdcCode("江苏", "南京"));
         Weather weather = WeatherUtil.getNowWeatherInfo("江宁区");
+        Map<String,Indices> indicesMap = WeatherUtil.getIndices(null);
         ArrayList<WxMpTemplateData> wxMpTemplateData = Lists.newArrayList(
                 TemplateDataBuilder.builder().name("qh").value(QhUtil.getRandomQh()).color("#D91AD9").build(),
                 TemplateDataBuilder.builder().name("now").value(DateTime.now().toString("yyyy年MM月dd日")).build(),
                 TemplateDataBuilder.builder().name("province").value(lover.getProvince()).build(),
-                TemplateDataBuilder.builder().name("weatherType").value(weather.getCurrentDayInfo().getType()).build(),
+                TemplateDataBuilder.builder().name("weatherType").value(weather.getTextDay()).build(),
                 TemplateDataBuilder.builder().name("temperature").value(gaodeWeather.getTemperature()).color("#722ED1").build(),
-                TemplateDataBuilder.builder().name("high").value(weather.getCurrentDayInfo().getHigh()).color("#F53F3F").build(),
-                TemplateDataBuilder.builder().name("low").value(weather.getCurrentDayInfo().getLow()).color("#F5319D").build(),
-                TemplateDataBuilder.builder().name("wind").value(gaodeWeather.getWinddirection()).build(),
-                TemplateDataBuilder.builder().name("windLevel").value(gaodeWeather.getWindpower()).color("#3491FA").build(),
-                TemplateDataBuilder.builder().name("remark").value(weather.getGanmao()).color("#3491FA").build(),
+                TemplateDataBuilder.builder().name("high").value(weather.getTempMax()).color("#F53F3F").build(),
+                TemplateDataBuilder.builder().name("low").value(weather.getTempMin()).color("#F5319D").build(),
+                TemplateDataBuilder.builder().name("wind").value(weather.getWindDirDay()).build(),
+                TemplateDataBuilder.builder().name("windLevel").value(weather.getWindScaleDay()+"级").color("#3491FA").build(),
+                TemplateDataBuilder.builder().name("dressing").value(indicesMap.get(IndicesTypeEnum.DRESSING.getValue()).getText()).color("#722ED1").build(),
+                TemplateDataBuilder.builder().name("makeup").value(indicesMap.get(IndicesTypeEnum.MAKE_UP.getValue()).getText()).color("#F53F3F").build(),
+                TemplateDataBuilder.builder().name("washCar").value(indicesMap.get(IndicesTypeEnum.WASH_CAR.getValue()).getText()).color("#F5319D").build(),
                 TemplateDataBuilder.builder().name("total").value(String.valueOf(days)).color("#F53F3F").build(),
                 TemplateDataBuilder.builder().name("nextBirthday").value(lover.getNextBirthdayDays()).color("#E865DF").build(),
                 TemplateDataBuilder.builder().name("nextMemorialDay").value(lover.getNextMemorialDay()).color("#551DB0").build()

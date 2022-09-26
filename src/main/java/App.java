@@ -21,11 +21,11 @@ public class App {
         storage.setSecret(appSecret);
         WxMpServiceImpl mpService = new WxMpServiceImpl();
         mpService.setWxMpConfigStorage(storage);
-        Lover lover = new Lover("o-O-Z6Pz1P9033TloUTSZzLqGy1U", "江苏省南京市江宁区", null, "1996-12-05", "2015-10-19");
-        WxMpTemplateMessage message = MessageFactory.resolveMessage(lover, "0e2W_TjnQAz5JqvUlqXbIf3Iq_UyR5NhH4AZiENx09s");
+        Lover me = new Lover("o-O-Z6Pz1P9033TloUTSZzLqGy1U", "江苏省南京市江宁区", null, "1996-12-05", "2015-10-19");
+        WxMpTemplateMessage message = MessageFactory.resolveMessage(me, "FxxJ42v8pRoluGx89_MbroNo8eQsr18sAHhbFWGrWCc");
         mpService.getTemplateMsgService().sendTemplateMsg(message);
-        Lover lover2 = new Lover("o-O-Z6ChkLvecqydcb2UIFR-twnU", "江苏省南京市江宁区", null, "1996-12-05", "2015-10-19");
-        WxMpTemplateMessage message2 = MessageFactory.resolveMessage(lover2, "0e2W_TjnQAz5JqvUlqXbIf3Iq_UyR5NhH4AZiENx09s");
+        Lover her = new Lover("o-O-Z6ChkLvecqydcb2UIFR-twnU", "江苏省南京市江宁区", null, "1996-12-05", "2015-10-19");
+        WxMpTemplateMessage message2 = MessageFactory.resolveMessage(her, "FxxJ42v8pRoluGx89_MbroNo8eQsr18sAHhbFWGrWCc");
         mpService.getTemplateMsgService().sendTemplateMsg(message2);
 
     }
