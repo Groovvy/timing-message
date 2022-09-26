@@ -1,4 +1,4 @@
-package bean;
+package cn.groovvy.bean;
 
 import cn.hutool.core.util.StrUtil;
 import com.google.common.collect.Lists;
@@ -6,9 +6,9 @@ import me.chanjar.weixin.mp.bean.template.WxMpTemplateData;
 import me.chanjar.weixin.mp.bean.template.WxMpTemplateMessage;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
-import util.GaodeWeatherUtil;
-import util.QhUtil;
-import util.WeatherUtil;
+import cn.groovvy.util.GaodeWeatherUtil;
+import cn.groovvy.util.QhUtil;
+import cn.groovvy.util.WeatherUtil;
 
 import java.util.ArrayList;
 import java.util.List;

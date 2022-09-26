@@ -1,5 +1,5 @@
-import bean.Lover;
-import bean.MessageFactory;
+import cn.groovvy.bean.Lover;
+import cn.groovvy.bean.MessageFactory;
 import me.chanjar.weixin.common.error.WxErrorException;
 import me.chanjar.weixin.mp.api.impl.WxMpServiceImpl;
 import me.chanjar.weixin.mp.bean.template.WxMpTemplateMessage;

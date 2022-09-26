@@ -1,6 +1,6 @@
-package util;
+package cn.groovvy.util;
 
-import bean.Weather;
+import cn.groovvy.bean.Weather;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
 

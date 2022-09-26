@@ -1,4 +1,4 @@
-package bean;
+package cn.groovvy.bean;
 
 import java.util.List;
 

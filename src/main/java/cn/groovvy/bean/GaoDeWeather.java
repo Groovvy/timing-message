@@ -1,4 +1,4 @@
-package bean;
+package cn.groovvy.bean;
 
 /**
  * @author wanghuaan

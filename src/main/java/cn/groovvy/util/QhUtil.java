@@ -1,4 +1,4 @@
-package util;
+package cn.groovvy.util;
 
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
