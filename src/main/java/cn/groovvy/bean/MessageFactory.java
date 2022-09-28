@@ -7,7 +7,6 @@ import me.chanjar.weixin.mp.bean.template.WxMpTemplateData;
 import me.chanjar.weixin.mp.bean.template.WxMpTemplateMessage;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
-import cn.groovvy.util.GaodeWeatherUtil;
 import cn.groovvy.util.QhUtil;
 import cn.groovvy.util.WeatherUtil;
 
@@ -53,15 +52,14 @@ public class MessageFactory {
      */
     private static List<WxMpTemplateData> buildData(Lover lover) {
         int days = Days.daysBetween(new DateTime(lover.getMemorialDay()), DateTime.now()).getDays();
-        GaoDeWeather gaodeWeather = GaodeWeatherUtil.getNowWeatherInfo(GaodeWeatherUtil.getAdcCode("江苏", "南京"));
-        Weather weather = WeatherUtil.getNowWeatherInfo(null);
+        Weather weather = WeatherUtil.getWeatherInfo(null);
         Map<String,Indices> indicesMap = WeatherUtil.getIndices(null);
         ArrayList<WxMpTemplateData> wxMpTemplateData = Lists.newArrayList(
                 TemplateDataBuilder.builder().name("qh").value(QhUtil.getRandomQh()).color("#D91AD9").build(),
                 TemplateDataBuilder.builder().name("now").value(DateTime.now().toString("yyyy年MM月dd日")).build(),
                 TemplateDataBuilder.builder().name("province").value(lover.getProvince()).build(),
                 TemplateDataBuilder.builder().name("weatherType").value(weather.getTextDay()).build(),
-                TemplateDataBuilder.builder().name("temperature").value(gaodeWeather.getTemperature()).color("#722ED1").build(),
+                TemplateDataBuilder.builder().name("temperature").value(WeatherUtil.getNowWeather(null)).color("#722ED1").build(),
                 TemplateDataBuilder.builder().name("high").value(weather.getTempMax()).color("#F53F3F").build(),
                 TemplateDataBuilder.builder().name("low").value(weather.getTempMin()).color("#F5319D").build(),
                 TemplateDataBuilder.builder().name("wind").value(weather.getWindDirDay()).build(),

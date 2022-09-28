@@ -20,6 +20,7 @@ import static cn.hutool.json.JSONUtil.parseObj;
 public class WeatherUtil {
 
     private static final String WEATHER_API = "https://devapi.qweather.com/v7/weather/3d?key=2b98d397eaae4d7caf53395efb224529&location=%s";
+    private static final String NOW_WEATHER_API = "https://devapi.qweather.com/v7/weather/now?key=2b98d397eaae4d7caf53395efb224529&location=%s";
     private static final String LOCATION_API = "https://geoapi.qweather.com/v2/city/lookup?key=2b98d397eaae4d7caf53395efb224529&location=%s";
     private static final String INDICES_API = "https://devapi.qweather.com/v7/indices/1d?type=0&key=2b98d397eaae4d7caf53395efb224529&location=%s";
 
@@ -31,7 +32,19 @@ public class WeatherUtil {
         return parseObj(parseObj(response.body()).getJSONArray("location").get(0)).getStr("id");
     }
 
-    public static Weather getNowWeatherInfo(String city) {
+    public static String getNowWeather(String city) {
+        if (city == null) {
+            city = "江宁区";
+        }
+        String locationId = getLocationId(city);
+        HttpResponse response = HttpUtil.createGet(String.format(NOW_WEATHER_API, locationId))
+                .setConnectionTimeout(3000)
+                .setReadTimeout(4000)
+                .execute();
+        return parseObj(parseObj(response.body()).getJSONObject("now")).getStr("temp");
+    }
+
+    public static Weather getWeatherInfo(String city) {
         if (city == null) {
             city = "江宁区";
         }
@@ -56,8 +69,4 @@ public class WeatherUtil {
         return daily.stream().collect(Collectors.toMap(Indices::getType, Function.identity()));
     }
 
-    public static void main(String[] args) {
-        Map map = getIndices("江宁区");
-        System.out.println();
-    }
 }
