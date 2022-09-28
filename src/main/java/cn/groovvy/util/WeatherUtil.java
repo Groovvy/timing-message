@@ -57,7 +57,7 @@ public class WeatherUtil {
     }
 
     public static void main(String[] args) {
-        Map map = getIndices(null);
+        Map map = getIndices("江宁区");
         System.out.println();
     }
 }

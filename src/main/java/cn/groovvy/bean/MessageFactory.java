@@ -54,7 +54,7 @@ public class MessageFactory {
     private static List<WxMpTemplateData> buildData(Lover lover) {
         int days = Days.daysBetween(new DateTime(lover.getMemorialDay()), DateTime.now()).getDays();
         GaoDeWeather gaodeWeather = GaodeWeatherUtil.getNowWeatherInfo(GaodeWeatherUtil.getAdcCode("江苏", "南京"));
-        Weather weather = WeatherUtil.getNowWeatherInfo("江宁区");
+        Weather weather = WeatherUtil.getNowWeatherInfo(null);
         Map<String,Indices> indicesMap = WeatherUtil.getIndices(null);
         ArrayList<WxMpTemplateData> wxMpTemplateData = Lists.newArrayList(
                 TemplateDataBuilder.builder().name("qh").value(QhUtil.getRandomQh()).color("#D91AD9").build(),
