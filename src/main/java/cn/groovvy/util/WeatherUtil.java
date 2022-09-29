@@ -45,8 +45,8 @@ public class WeatherUtil {
         }
         String locationId = getLocationId(city);
         HttpResponse response = HttpUtil.createGet(String.format(NOW_WEATHER_API, locationId))
-                .setConnectionTimeout(3000)
-                .setReadTimeout(4000)
+                .setConnectionTimeout(30000)
+                .setReadTimeout(40000)
                 .execute();
         return parseObj(parseObj(response.body()).getJSONObject("now")).getStr("temp");
     }
@@ -57,8 +57,8 @@ public class WeatherUtil {
         }
         String locationId = getLocationId(city);
         HttpResponse response = HttpUtil.createGet(String.format(WEATHER_API, locationId))
-                .setConnectionTimeout(3000)
-                .setReadTimeout(4000)
+                .setConnectionTimeout(30000)
+                .setReadTimeout(40000)
                 .execute();
         return parseObj(parseObj(response.body()).getJSONArray("daily").get(0)).toBean(Weather.class);
     }
@@ -69,8 +69,8 @@ public class WeatherUtil {
         }
         String locationId = getLocationId(city);
         HttpResponse response = HttpUtil.createGet(String.format(INDICES_API, locationId))
-                .setConnectionTimeout(3000)
-                .setReadTimeout(4000)
+                .setConnectionTimeout(30000)
+                .setReadTimeout(40000)
                 .execute();
         List<Indices> daily = parseObj(response.body()).getJSONArray("daily").toList(Indices.class);
         return daily.stream().collect(Collectors.toMap(Indices::getType, Function.identity()));
