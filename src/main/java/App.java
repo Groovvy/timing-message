@@ -24,9 +24,9 @@ public class App {
         Lover me = new Lover("o-O-Z6Pz1P9033TloUTSZzLqGy1U", "江苏省南京市江宁区", null, "1996-12-05", "2015-10-19");
         WxMpTemplateMessage message = MessageFactory.resolveMessage(me, "FxxJ42v8pRoluGx89_MbroNo8eQsr18sAHhbFWGrWCc");
         mpService.getTemplateMsgService().sendTemplateMsg(message);
-//        Lover her = new Lover("o-O-Z6ChkLvecqydcb2UIFR-twnU", "江苏省南京市江宁区", null, "1996-12-05", "2015-10-19");
-//        WxMpTemplateMessage message2 = MessageFactory.resolveMessage(her, "FxxJ42v8pRoluGx89_MbroNo8eQsr18sAHhbFWGrWCc");
-//        mpService.getTemplateMsgService().sendTemplateMsg(message2);
+        Lover her = new Lover("o-O-Z6ChkLvecqydcb2UIFR-twnU", "江苏省南京市江宁区", null, "1996-12-05", "2015-10-19");
+        WxMpTemplateMessage message2 = MessageFactory.resolveMessage(her, "FxxJ42v8pRoluGx89_MbroNo8eQsr18sAHhbFWGrWCc");
+        mpService.getTemplateMsgService().sendTemplateMsg(message2);
 
     }
 }
