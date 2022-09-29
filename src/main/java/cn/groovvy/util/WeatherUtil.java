@@ -26,6 +26,7 @@ public class WeatherUtil {
     private static final String INDICES_API = "https://devapi.qweather.com/v7/indices/1d?type=0&key=2b98d397eaae4d7caf53395efb224529&location=%s";
 
     public static String getLocationId(String city){
+        System.out.println(String.format(LOCATION_API, city));
         HttpResponse response = HttpUtil.createGet(String.format(LOCATION_API, city))
                 .setConnectionTimeout(3000)
                 .setReadTimeout(4000)
