@@ -34,8 +34,9 @@ public class WeatherUtil {
         System.out.println(response.body());
         System.out.println(parseObj(response.body()));
         System.out.println(parseObj(response.body()).getJSONArray("location"));
-        System.out.println(parseObj(response.body()).getJSONArray("location").get(0));
-        return parseObj(parseObj(response.body()).getJSONArray("location").get(0)).getStr("id");
+//        System.out.println(parseObj(response.body()).getJSONArray("location").get(0));
+//        return parseObj(parseObj(response.body()).getJSONArray("location").get(0)).getStr("id");
+        return "101190104";
     }
 
     public static String getNowWeather(String city) {
