@@ -4,6 +4,7 @@ import cn.groovvy.bean.Indices;
 import cn.groovvy.bean.Weather;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
+import cn.hutool.json.JSONUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,10 @@ public class WeatherUtil {
                 .setConnectionTimeout(3000)
                 .setReadTimeout(4000)
                 .execute();
+        System.out.println(response.body());
+        System.out.println(parseObj(response.body()));
+        System.out.println(parseObj(response.body()).getJSONArray("location"));
+        System.out.println(parseObj(response.body()).getJSONArray("location").get(0));
         return parseObj(parseObj(response.body()).getJSONArray("location").get(0)).getStr("id");
     }
 
@@ -67,6 +72,10 @@ public class WeatherUtil {
                 .execute();
         List<Indices> daily = parseObj(response.body()).getJSONArray("daily").toList(Indices.class);
         return daily.stream().collect(Collectors.toMap(Indices::getType, Function.identity()));
+    }
+
+    public static void main(String[] args) {
+        getWeatherInfo(null);
     }
 
 }
