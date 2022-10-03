@@ -11,13 +11,13 @@ import static cn.hutool.json.JSONUtil.parseObj;
  */
 public class QhUtil {
 
-    private static final String API = "https://api.1314.cool/words/api.php?return=json";
+    private static final String API = "https://api.lovelive.tools/api/SweetNothings";
 
     public static String getRandomQh() {
         HttpResponse response = HttpUtil.createGet(API)
                 .setConnectionTimeout(3000)
                 .setReadTimeout(4000)
                 .execute();
-        return parseObj(response.body()).get("word").toString().replaceAll("<br>","\n");
+        return parseObj(response.body()).toString().replaceAll("<br>","\n");
     }
 }
