@@ -3,7 +3,6 @@ package cn.groovvy.util;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
 
-import static cn.hutool.json.JSONUtil.parseObj;
 
 /**
  * @author wanghuaan
@@ -18,6 +17,6 @@ public class QhUtil {
                 .setConnectionTimeout(3000)
                 .setReadTimeout(4000)
                 .execute();
-        return parseObj(response.body()).toString().replaceAll("<br>","\n");
+        return response.body().replaceAll("<br>","\n");
     }
 }
